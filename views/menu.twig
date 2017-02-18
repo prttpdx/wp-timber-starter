@@ -1,0 +1,17 @@
+{% if menu %}
+		<ul>
+		{% for item in menu %}
+			<li class="{{item.classes | join(' ')}} {{item.children() ? '' : ''}}">
+				<a href="{{item.get_link}}">{{item.title}}</a>
+				{% if (item.children()) %}
+		            <ul>
+		                {% for child in item.children() %}
+		                    <li><a href="{{ child.url() }}">{{ child.title }}</a></li>
+		                {% endfor %}
+		            </ul>
+		        {% endif %}
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endif %}
