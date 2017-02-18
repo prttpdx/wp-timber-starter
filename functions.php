@@ -12,7 +12,7 @@ if ( ! class_exists( 'Timber' ) ) {
 	return;
 }
 
-Timber::$dirname = array('templates', 'views');
+Timber::$dirname = array('views');
 
 class StarterSite extends TimberSite {
 
@@ -28,11 +28,10 @@ class StarterSite extends TimberSite {
 
 	function add_to_context( $context ) {
 		$context['menu'] = new TimberMenu('menu');
-		$context['footer_menu_1'] = new TimberMenu('footer-menu-1');
-		$context['footer_menu_2'] = new TimberMenu('footer-menu-2');
-		$context['footer_menu_3'] = new TimberMenu('footer-menu-3');
 		$context['site'] = $this;
-		$context['options'] = get_fields('options');
+		if( function_exists('get_fields') ) {
+			$context['options'] = get_fields('options');
+		}
 		return $context;
 	}
 
@@ -52,7 +51,7 @@ function init_scripts() {
 	wp_enqueue_style( 'wp-dead-simple-timber-app', get_template_directory_uri() . '/public/css/app.css' );
 
 	// google maps
-	wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5stYQshVeasrOVdUAyPDST8cL7jMTcQ');
+	//wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=KEY');
 	
 	// js
 	wp_enqueue_script( 'wp-dead-simple-timber-vendor-js', get_template_directory_uri() . '/public/js/vendor.js' );
@@ -68,43 +67,12 @@ function init_scripts() {
 add_action( 'wp_enqueue_scripts', 'init_scripts' );
 
 if( function_exists('acf_add_options_page') ) {
-	
 	acf_add_options_page();
-	
 }
 
 function my_acf_init() {
-	
-	acf_update_setting('google_api_key', 'AIzaSyBu5stYQshVeasrOVdUAyPDST8cL7jMTcQ');
+	acf_update_setting('google_api_key', 'KEY');
 }
 if( function_exists('acf_update_setting') ) {
 	add_action('acf/init', 'my_acf_init');
 }
-
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
-
-function sanitize_field_key($key) {
-	return ucfirst(str_replace('_', ' ', $key));
-}
-
-function renderToVar($file, $context){
-    ob_start();
-    Timber::render( $file, $context );
-    return ob_get_clean();
-}
-
-function use_straight_join( $distinct_clause ) {
-    $distinct_clause = 'STRAIGHT_JOIN' . $distinct_clause;
-    return $distinct_clause;
-}
-
-// select
-require_once('includes/select.php');
-// ricerca
-require_once('includes/search.php');
-// paginazione
-require_once('includes/pagination.php');
