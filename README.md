@@ -1,6 +1,6 @@
-# wp-dead-simple-timber
+# WP Timber Starter
 
-I started developing WordPress themes with [Timber](https://upstatement.com/timber/) and now I can't imagine my workflow without it.
+WordPress starter theme with [Timber](https://upstatement.com/timber/)
 
 ## License
 
