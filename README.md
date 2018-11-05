@@ -1,6 +1,6 @@
 # WP Timber Starter
 
-WordPress starter theme with [Timber](https://upstatement.com/timber/)
+WordPress starter theme with [Timber](https://upstatement.com/timber/).
 
 ## License
 
