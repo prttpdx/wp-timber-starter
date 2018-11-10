@@ -1,0 +1,6 @@
+.gitignore
+.git-ftp-ignore
+app/*
+brunch-config.js
+package.json
+package-lock.json
