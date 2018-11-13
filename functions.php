@@ -17,7 +17,7 @@ Timber::$dirname = array('views');
 class StarterSite extends TimberSite {
 
 	function __construct() {
-		load_theme_textdomain( 'wp-dead-simple-timber', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'wp-timber-starter', get_template_directory() . '/languages' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'menus' );
 		add_image_size( 'big', 1920, 1080 );
@@ -47,21 +47,21 @@ new StarterSite();
 function init_scripts() {
 	
 	// css
-	wp_enqueue_style( 'wp-dead-simple-timber-vendor', get_template_directory_uri() . '/public/css/vendor.css' );
-	wp_enqueue_style( 'wp-dead-simple-timber-app', get_template_directory_uri() . '/public/css/app.css' );
+	wp_enqueue_style( 'wp-timber-starter-vendor', get_template_directory_uri() . '/public/css/vendor.css' );
+	wp_enqueue_style( 'wp-timber-starter-app', get_template_directory_uri() . '/public/css/app.css' );
 
 	// google maps
 	//wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=KEY');
 	
 	// js
-	wp_enqueue_script( 'wp-dead-simple-timber-vendor-js', get_template_directory_uri() . '/public/js/vendor.js' );
-	wp_enqueue_script( 'wp-dead-simple-timber-app-js', get_template_directory_uri() . '/public/js/app.js' );
+	wp_enqueue_script( 'wp-timber-starter-vendor-js', get_template_directory_uri() . '/public/js/vendor.js' );
+	wp_enqueue_script( 'wp-timber-starter-app-js', get_template_directory_uri() . '/public/js/app.js' );
 
-	wp_localize_script( 'wp-dead-simple-timber-app-js', 'theme_url_data', array( 'themeurl' => get_template_directory_uri() ) );
-	wp_localize_script( 'wp-dead-simple-timber-app-js', 'admin_ajax_data', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'wp-timber-starter-app-js', 'theme_url_data', array( 'themeurl' => get_template_directory_uri() ) );
+	wp_localize_script( 'wp-timber-starter-app-js', 'admin_ajax_data', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	
 	// load theme style
-	wp_enqueue_style( 'wp-dead-simple-timber-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'wp-timber-starter-style', get_stylesheet_uri() );
 
 }
 add_action( 'wp_enqueue_scripts', 'init_scripts' );
