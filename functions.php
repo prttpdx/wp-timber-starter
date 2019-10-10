@@ -47,15 +47,13 @@ new StarterSite();
 function init_scripts() {
 	
 	// css
-	wp_enqueue_style( 'wp-timber-starter-vendor', get_template_directory_uri() . '/public/css/vendor.css' );
-	wp_enqueue_style( 'wp-timber-starter-app', get_template_directory_uri() . '/public/css/app.css' );
+	wp_enqueue_style( 'wp-timber-starter-app', get_template_directory_uri() . '/dist/app.css' );
 
 	// google maps
 	//wp_enqueue_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=KEY');
 	
 	// js
-	wp_enqueue_script( 'wp-timber-starter-vendor-js', get_template_directory_uri() . '/public/js/vendor.js' );
-	wp_enqueue_script( 'wp-timber-starter-app-js', get_template_directory_uri() . '/public/js/app.js' );
+	wp_enqueue_script( 'wp-timber-starter-app-js', get_template_directory_uri() . '/dist/app.js', array('jquery') );
 
 	wp_localize_script( 'wp-timber-starter-app-js', 'theme_url_data', array( 'themeurl' => get_template_directory_uri() ) );
 	wp_localize_script( 'wp-timber-starter-app-js', 'admin_ajax_data', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );

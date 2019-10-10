@@ -1,6 +1,9 @@
 .gitignore
 .git-ftp-ignore
+.browserlistrc
+.postcssrc
+.sassrc
 app/*
-brunch-config.js
 package.json
 package-lock.json
+yarn.lock
